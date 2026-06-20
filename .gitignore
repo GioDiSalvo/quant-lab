@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+my_venv/
+
+# Jupyter
+**/.ipynb_checkpoints/
+**/.virtual_documents/
+
+# macOS
+.DS_Store
+
+# Data
+data/**/*.parquet
+data/**/*.csv
+
+.env
+*.log
