@@ -97,3 +97,9 @@ def save_parquet(df, path):
         Destination path.
     """
     df.to_parquet(path)
+
+def load_parquet(path):
+    """
+    Load a DataFrame from a parquet file.
+    """
+    return pd.read_parquet(path)
