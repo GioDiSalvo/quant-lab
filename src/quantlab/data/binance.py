@@ -84,3 +84,16 @@ def validate_data(df):
         if not check.all():
             print('error at ', check)
         assert check.all()
+
+def save_parquet(df, path):
+    """
+    Save a DataFrame to a parquet file.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame to save.
+    path : str
+        Destination path.
+    """
+    df.to_parquet(path)
