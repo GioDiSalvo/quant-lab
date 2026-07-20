@@ -35,6 +35,23 @@ def max_drawdown(equity):
     """    
     return (equity/equity.cummax() - 1).min()
 
+def historical_var(df, confidence_level):
+    returns = _returns(df)
+    q = returns.dropna().quantile(1 - confidence_level)
+    return -min(0, q)
+
+def expected_shortfall(df, confidence_level):
+    returns = _returns(df)
+    q = returns.quantile(1 - confidence_level)
+    tail_returns = returns[returns <= q]
+    if tail_returns.empty:
+        return 0
+    return max(-tail_returns.mean(), 0.0)
+
+def running_drawdown(df):
+    equity = equity_curve(df)
+    return equity / equity.cummax() - 1
+
 def _returns(df):
     if 'returns' in df.columns:
         return df['returns'].dropna()
